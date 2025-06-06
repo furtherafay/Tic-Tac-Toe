@@ -4,6 +4,7 @@
   
   body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -17,6 +18,7 @@
     width: 300px;
     grid-template-columns: 100px 100px 100px;
     grid-template-rows: 100px 100px 100px;
+    margin-bottom: 30px;
 }
 
 .Cell{
@@ -41,4 +43,11 @@
 
 #C7, #C8{
     border-right: 1px solid black;
+}
+
+button{
+    height: 30px;
+    width: 60px;
+    background-color: hsl(0, 59%, 61%);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
