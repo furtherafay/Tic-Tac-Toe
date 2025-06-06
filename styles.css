@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+ 
+#container{
+    display: grid;
+    /* border: 2px solid black; */
+    height: 300px;
+    width: 300px;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+}
+
+.Cell{
+    display: flex;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 4rem;
+}
+
+#C1, #C2, #C4, #C5{
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#C3, #C6{
+    border-bottom: 1px solid black;
+}
+
+#C7, #C8{
+    border-right: 1px solid black;
+}
