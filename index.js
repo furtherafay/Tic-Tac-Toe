@@ -53,6 +53,7 @@ cells.forEach(cell => {
         board[Number(event.target.id.charAt(1))-1] = cell.textContent
         if(checkWinner() == "x" || checkWinner() == "o"){
             document.getElementById("Winner").textContent = `${checkWinner()} wins!`
+            board = ["", "", "", "", "", "", "", "", ""]
             setTimeout(Reset, 3000)
         }
     })
