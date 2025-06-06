@@ -4,6 +4,8 @@ let player = 1
 
 let board = ["", "", "", "", "", "", "", "", ""];
 
+let won = false
+
 const winPatterns = [
     [0, 1, 2], 
     [3, 4, 5], 
@@ -15,15 +17,14 @@ const winPatterns = [
     [2, 4, 6]  
   ];
   
-function checkWinner(){
+  function checkWinner(){
     for (let win of winPatterns){
-        if (board[win[0]] == board[win[1]] &&
-            board[win[0]] == board[win[2]]
-        )
-        return board[win[0]]
+        const [a, b, c] = win;
+        if (board[a] !== "" && board[a] === board[b] && board[a] === board[c]){
+            return board[a];
+        }
     }
-
-    return null
+    return null;
 }
 
 
@@ -39,22 +40,28 @@ function placexoro(){
 }
 
 function Reset(){
+
+    board = ["", "", "", "", "", "", "", "", ""]    
+    player = 1
     cells.forEach(cell =>{
         cell.textContent = ""
     })
 
-    document.getElementById("Winner").textContent = null
+    document.getElementById("Winner").textContent = ""
+    won = false
 }
 
 cells.forEach(cell => {
     cell.addEventListener("click", event => {
-        if (cell.textContent == "")
-        cell.textContent = placexoro()
-        board[Number(event.target.id.charAt(1))-1] = cell.textContent
-        if(checkWinner() == "x" || checkWinner() == "o"){
-            document.getElementById("Winner").textContent = `${checkWinner()} wins!`
-            board = ["", "", "", "", "", "", "", "", ""]
-            setTimeout(Reset, 3000)
+        if (cell.textContent == "" && won == false){
+            cell.textContent = placexoro()
+            board[Number(event.target.id.charAt(1))-1] = cell.textContent
+            const winner = checkWinner()
+            console.log(winner)
+            if(winner === "x" || winner === "o"){
+                document.getElementById("Winner").textContent = `${winner} wins!`
+                won = true
+            }
         }
     })
 })
